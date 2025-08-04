@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "928816508417",
+    "project_id": "flutter-agentic-app-52afd",
+    "storage_bucket": "flutter-agentic-app-52afd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:928816508417:android:3178e9160abd650483da00",
+        "android_client_info": {
+          "package_name": "com.example.flutter_agentic_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWX-IjWInXjMWFBLmd3hWK97HB8qc4yYg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
