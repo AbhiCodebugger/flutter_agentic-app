@@ -14,10 +14,10 @@ class GeminiService {
 
   // Private constructor
   GeminiService._internal()
-      : _model = FirebaseAI.googleAI().generativeModel(
-          // Using a valid and recent model
-          model: "gemini-1.5-flash",
-        );
+    : _model = FirebaseAI.googleAI().generativeModel(
+        // Using a valid and recent model
+        model: "gemini-3.1-flash-lite",
+      );
 
   String buildGeminiPrompt({
     required List<String> topics,
@@ -93,8 +93,10 @@ Now, generate the jokes for the topic(s): "$topicsString".
       final cleanedJson = cleanLLMJson(res.text!);
       return jsonDecode(cleanedJson) as Map<String, dynamic>;
     } catch (e, stackTrace) {
-      log("An error occurred in generateJokes: ${e.toString()}",
-          stackTrace: stackTrace);
+      log(
+        "An error occurred in generateJokes: ${e.toString()}",
+        stackTrace: stackTrace,
+      );
       return null;
     }
   }
