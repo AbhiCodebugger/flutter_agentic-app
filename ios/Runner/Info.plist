@@ -45,5 +45,15 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera access is needed to capture photos for AI image explanation.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Microphone access is needed for voice commands and speech-to-text.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Speech recognition is needed to convert your voice into commands for the agent.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Photo library access is needed to select images for AI explanation.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Photo library access is needed to save captured images when required.</string>
 </dict>
 </plist>

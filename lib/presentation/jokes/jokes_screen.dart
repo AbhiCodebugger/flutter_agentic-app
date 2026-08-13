@@ -3,14 +3,14 @@ import 'package:flutter_agentic_app/model/joke.dart';
 import 'package:flutter_agentic_app/provider/jokes_provider.dart';
 import 'package:provider/provider.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class JokesScreen extends StatefulWidget {
+  const JokesScreen({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<JokesScreen> createState() => _JokesScreenState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _JokesScreenState extends State<JokesScreen> {
   final _scrollController = ScrollController();
   final _refreshIndicatorKey = GlobalKey<RefreshIndicatorState>();
 
@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Random Joke App")),
+      appBar: AppBar(title: const Text('Jokes')),
       body: Consumer<JokesProvider>(
         builder: (context, provider, _) {
           return Column(
@@ -164,7 +164,7 @@ class _JokeCard extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             Text(
-              "- ${joke.author}",
+              '- ${joke.author}',
               style: TextStyle(
                 fontStyle: FontStyle.italic,
                 color: Colors.grey[700],

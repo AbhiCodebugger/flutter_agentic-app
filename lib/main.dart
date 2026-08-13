@@ -2,9 +2,7 @@ import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_agentic_app/firebase_options.dart';
-import 'package:flutter_agentic_app/presentation/home_page.dart';
-import 'package:flutter_agentic_app/provider/jokes_provider.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_agentic_app/presentation/home_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,15 +19,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => JokesProvider()..fetchJokes(),
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        ),
-        home: HomePage(),
+    return MaterialApp(
+      title: 'Agentic App',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
       ),
+      home: const HomeScreen(),
     );
   }
 }

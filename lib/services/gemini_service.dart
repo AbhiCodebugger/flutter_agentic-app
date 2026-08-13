@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:typed_data';
 
 import 'package:firebase_ai/firebase_ai.dart';
 import 'package:flutter_agentic_app/example.dart';
@@ -18,6 +19,11 @@ class GeminiService {
         // Using a valid and recent model
         model: "gemini-3.1-flash-lite",
       );
+
+  static const String defaultVisionPrompt =
+      'Explain this image clearly and thoroughly. Describe the main subjects, '
+      'setting, notable details, colors, and any visible text. Keep the tone '
+      'helpful and concise.';
 
   String buildGeminiPrompt({
     required List<String> topics,
@@ -98,6 +104,45 @@ Now, generate the jokes for the topic(s): "$topicsString".
         stackTrace: stackTrace,
       );
       return null;
+    }
+  }
+
+  /// Multimodal (text + image) request for vision explanation.
+  Future<String?> explainImage({
+    required Uint8List imageBytes,
+    String mimeType = 'image/jpeg',
+    String? prompt,
+  }) async {
+    if (imageBytes.isEmpty) {
+      log('Error: Image bytes cannot be empty.');
+      return null;
+    }
+
+    final textPrompt = (prompt == null || prompt.trim().isEmpty)
+        ? defaultVisionPrompt
+        : prompt.trim();
+
+    try {
+      final content = Content.multi([
+        TextPart(textPrompt),
+        InlineDataPart(mimeType, imageBytes),
+      ]);
+
+      final res = await _model.generateContent([content]);
+      log('Vision response: ${res.text}');
+
+      if (res.text == null || res.text!.isEmpty) {
+        log('Error: Received empty vision response from the model.');
+        return null;
+      }
+
+      return res.text!.trim();
+    } catch (e, stackTrace) {
+      log(
+        'An error occurred in explainImage: ${e.toString()}',
+        stackTrace: stackTrace,
+      );
+      rethrow;
     }
   }
 

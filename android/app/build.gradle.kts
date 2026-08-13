@@ -10,7 +10,8 @@ plugins {
 
 android {
     namespace = "com.example.flutter_agentic_app"
-    compileSdk = flutter.compileSdkVersion
+    // permission_handler_android requires compileSdk 37+
+    compileSdk = 37
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
